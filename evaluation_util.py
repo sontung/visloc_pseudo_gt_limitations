@@ -48,6 +48,44 @@ def read_pose_data(file_name):
 
     return pose_dict
 
+def convert_pose_data(pose_data):
+    '''
+    Expects path to file with one pose per line.
+    Input pose is expected to map world to camera coordinates.
+    Output pose maps camera to world coordinates.
+    Pose format: file qw qx qy qz tx ty tz (f)
+    Return dictionary that maps a file name to a tuple of (4x4 pose, focal_length)
+    Sets focal_length to None if not contained in file.
+    '''
+
+    # create a dict from the poses with file name as key
+    pose_dict = {}
+    for pose_string in pose_data:
+
+        pose_string = pose_string.split()
+        file_name = pose_string[0]
+
+        pose_q = np.array(pose_string[1:5])
+        pose_q = np.array([pose_q[1], pose_q[2], pose_q[3], pose_q[0]])
+        pose_t = np.array(pose_string[5:8])
+        pose_R = Rotation.from_quat(pose_q).as_matrix()
+
+        pose_4x4 = np.identity(4)
+        pose_4x4[0:3, 0:3] = pose_R
+        pose_4x4[0:3, 3] = pose_t
+
+        # convert world->cam to cam->world for evaluation
+        pose_4x4 = np.linalg.inv(pose_4x4)
+
+        if len(pose_string) > 8:
+            focal_length = float(pose_string[8])
+        else:
+            focal_length = None
+
+        pose_dict[file_name] = (pose_4x4, focal_length)
+
+    return pose_dict
+
 def compute_error_max_rot_trans(pgt_pose, est_pose):
     '''
     Compute the pose error.
