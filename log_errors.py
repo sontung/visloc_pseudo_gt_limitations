@@ -79,7 +79,7 @@ for s_idx, scene_data in enumerate(test_data["scenes"]):
 
     # iterate through algorithm estimates
     for estimate_data in scene_data["estimates"]:
-        if estimate_data["algo"] != "ar_vloc_debug":
+        if estimate_data["algo"] != "ar_vloc":
             continue
 
         # initialise algorithm accumulated metrics
