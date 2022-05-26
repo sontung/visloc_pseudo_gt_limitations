@@ -82,7 +82,7 @@
         {"algo": "DSAC* (+D)", "estimated_poses":  "estimates/sfm/7scenes/redkitchen_dsac_rgbd.txt"},
         {"algo": "ar_vloc_debug", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws/res_debug.txt"},
         {"algo": "ar_vloc", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws/res_est.txt"},
-        {"algo": "ar_vloc_diversified", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws/res_div.txt"}
+        {"algo": "ar_vloc_diversified", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws_div/res_div.txt"}
       ]
     },
     {

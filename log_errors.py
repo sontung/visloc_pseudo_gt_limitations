@@ -79,7 +79,7 @@ for s_idx, scene_data in enumerate(test_data["scenes"]):
 
     # iterate through algorithm estimates
     for estimate_data in scene_data["estimates"]:
-        if estimate_data["algo"] != "ar_vloc":
+        if estimate_data["algo"] != "ar_vloc_diversified":
             continue
 
         # initialise algorithm accumulated metrics
@@ -154,4 +154,4 @@ for algo, metrics in algo_metrics.items():
     plt.legend(loc="best")
 
 plt.tight_layout()
-plt.savefig(plot_out_file)
+
