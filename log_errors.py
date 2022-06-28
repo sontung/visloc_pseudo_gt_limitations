@@ -22,7 +22,7 @@ parser.add_argument('--error_threshold', type=float, default=5,
 parser.add_argument('--error_type', type=str, default='pose', choices=['pose', 'dcre_max', 'dcre_mean'],
                     help='Choice of error type.')
 
-parser.add_argument('--error_max_images', type=int, default=1000,
+parser.add_argument('--error_max_images', type=int, default=-1,
                     help='Use at most x images when calculating error distribution for speed. -1 for using all.')
 
 opt = parser.parse_args()
@@ -60,7 +60,7 @@ rgb_image_width = test_data['image_width']
 
 for s_idx, scene_data in enumerate(test_data["scenes"]):
 
-    if scene_data["name"] != "RedKitchen":
+    if scene_data["name"] != "Office":
         continue
 
     scene_name = scene_data['name']
@@ -79,7 +79,7 @@ for s_idx, scene_data in enumerate(test_data["scenes"]):
 
     # iterate through algorithm estimates
     for estimate_data in scene_data["estimates"]:
-        if estimate_data["algo"] != "ar_vloc_diversified":
+        if estimate_data["algo"] != "ar_vloc":
             continue
 
         # initialise algorithm accumulated metrics
