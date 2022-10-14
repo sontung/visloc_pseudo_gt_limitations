@@ -14,7 +14,8 @@ parser = argparse.ArgumentParser(
     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument('data_config',
-                    help='file containing the test case specification including paths to pseudo ground truth and estimates of algorithms')
+                    help='file containing the test case specification including paths to '
+                         'pseudo ground truth and estimates of algorithms')
 
 parser.add_argument('--error_threshold', type=float, default=5,
                     help='Error threshold when calculating recall, and bound for plotting error curves.')
@@ -60,8 +61,8 @@ rgb_image_width = test_data['image_width']
 
 for s_idx, scene_data in enumerate(test_data["scenes"]):
 
-    # if scene_data["name"] != "Office":
-    #     continue
+    if scene_data["name"] != "RedKitchen":
+        continue
 
     scene_name = scene_data['name']
     scene_folder = scene_data['folder']
@@ -109,7 +110,7 @@ for s_idx, scene_data in enumerate(test_data["scenes"]):
                 # catching the case that an algorithm did not provide an estimate
                 errors[i] = math.inf
 
-        recall =  np.mean(errors < opt.error_threshold)
+        recall = np.mean(errors < opt.error_threshold)
         hist_errors, cum_recall_base = np.histogram(errors, bins=100, range=[0,opt.error_threshold])
 
         cum_recall = np.cumsum(hist_errors) / errors.shape[0]

@@ -86,6 +86,7 @@ def convert_pose_data(pose_data):
 
     return pose_dict
 
+
 def compute_error_max_rot_trans(pgt_pose, est_pose):
     '''
     Compute the pose error.
@@ -100,6 +101,15 @@ def compute_error_max_rot_trans(pgt_pose, est_pose):
     r_err = np.linalg.norm(r_err) * 180 / math.pi
 
     return max(r_err, t_err*100)
+
+def compute_error_rot_trans(pgt_pose, est_pose):
+    t_err = float(np.linalg.norm(pgt_pose[0:3, 3] - est_pose[0:3, 3]))
+
+    r_err = est_pose[0:3, 0:3] @ np.transpose(pgt_pose[0:3, 0:3])
+    r_err = cv.Rodrigues(r_err)[0]
+    r_err = np.linalg.norm(r_err) * 180 / math.pi
+
+    return t_err, r_err
 
 def infer_depth_file_from_image_file(image_file):
     '''
@@ -184,3 +194,8 @@ def compute_error_dcre(depth_file, pgt_pose, est_pose, rgb_focal_length, rgb_ima
         return float(torch.max(reprojection_errors)) / rgb_to_d_scale
     else:
         return float(torch.mean(reprojection_errors)) / rgb_to_d_scale
+
+
+if __name__ == '__main__':
+    read_pose_data("/home/n11373598/work/nerf-vloc/data/redkitchen/res_nerf.txt")
+    read_pose_data("/home/n11373598/work/nerf-vloc/data/redkitchen/query_gt_poses_nerf.txt")

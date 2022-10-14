@@ -27,7 +27,8 @@
         {"algo": "DVLAD+R2D2", "estimated_poses":  "estimates/sfm/7scenes/fire_r2d2_rgb.txt"},
         {"algo": "DVLAD+R2D2 (+D)", "estimated_poses":  "estimates/sfm/7scenes/fire_r2d2_rgbd.txt"},
         {"algo": "DSAC*", "estimated_poses":  "estimates/sfm/7scenes/fire_dsac_rgb.txt"},
-        {"algo": "DSAC* (+D)", "estimated_poses":  "estimates/sfm/7scenes/fire_dsac_rgbd.txt"}
+        {"algo": "DSAC* (+D)", "estimated_poses":  "estimates/sfm/7scenes/fire_dsac_rgbd.txt"},
+        {"algo": "ar-vloc", "estimated_poses":  "/home/n11373598/work/ar-vloc/7scenes_ws_div/res_poselib.txt"}
       ]
     },
     {
@@ -80,9 +81,9 @@
         {"algo": "DVLAD+R2D2 (+D)", "estimated_poses":  "estimates/sfm/7scenes/redkitchen_r2d2_rgbd.txt"},
         {"algo": "DSAC*", "estimated_poses":  "estimates/sfm/7scenes/redkitchen_dsac_rgb.txt"},
         {"algo": "DSAC* (+D)", "estimated_poses":  "estimates/sfm/7scenes/redkitchen_dsac_rgbd.txt"},
-        {"algo": "ar_vloc_debug", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws/res_debug.txt"},
-        {"algo": "ar_vloc", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws/res_est.txt"},
-        {"algo": "ar_vloc_diversified", "estimated_poses":  "/home/sontung/work/ar-vloc/7scenes_ws_div/res_div.txt"}
+        {"algo": "vloc", "estimated_poses":  "/home/n11373598/work/ar-vloc/7scenes_ws_div/res_poselib.txt"},
+        {"algo": "nerf-vloc", "estimated_poses":  "/home/n11373598/work/nerf-vloc/data/redkitchen/res_nerf.txt"}
+
       ]
     },
     {
